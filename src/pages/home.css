@@ -4,15 +4,17 @@
   display: flex;
   background-color: rgb(239, 239, 239);
   justify-content: space-between;
+  align-items: center;
   padding-top: 10px;
-  height: 50px;
+  min-height: 50px;
+  gap: 10px;
 }
 .main-upper-txt{
   margin-left: 50px;
   font-size: 18px;
 }
 .new-product{
-padding: 2px 15px;
+  padding: 10px 15px;
   background-color: #033affcf;
   color: #ffffff;
   border: none;
@@ -22,6 +24,31 @@ padding: 2px 15px;
   transition: background-color 0.3s ease;
   margin-right: 50px;
 }
+@media (max-width: 868px) {
+  .main-upper-txt{
+    margin-left: 20px;
+    font-size: 16px;
+  }
+  .new-product{
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-right: 20px;
+  }
+  
+}
+@media (max-width: 500px) {
+  .main-upper-txt{
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  .new-product{
+    padding: 5px 10px;
+    font-size: 15px;
+    margin-right: 10px;
+  }
+  
+}
+
 
 .main-page{
     background-color: rgb(239, 239, 239);
@@ -30,6 +57,8 @@ padding: 2px 15px;
     flex-wrap: wrap;
     padding: 10px 20px;
 }
+
+
 
 
 /* Main Card Style */
