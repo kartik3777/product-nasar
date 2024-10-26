@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './home.css'
 import ProductCard from './ProductCard'
 import { useNavigate } from 'react-router-dom'
+import Auth from './Login'
+import CloseIcon from '@mui/icons-material/Close';
 
 const Data =[
     {
@@ -60,16 +62,37 @@ const Data =[
     },
 ]
 
-function Home() {
+function Home(props) {
+    // const [islogin, setislogin] = useState(false);
 
     const navigate = useNavigate(); // Hook to navigate
 
     const handleAddProduct = () => {
-      navigate('/add-product'); // Navigate to Add Product page
+        if(props.isAuthorized){
+            navigate('/add-product'); // Navigate to Add Product page
+        }else{
+            alert("only logged in person can perform this action");
+        }
+     
     };
+    function bandKaro(){
+        props.onlogin(false);
+    }
 
   return (
     <>
+    <div className='outer-home'>
+       {
+        props.islogin && (
+            <div className='login-box-home'>
+                 <div onClick={bandKaro} className="cut-icon">
+                    <CloseIcon />
+                 </div>
+                 <Auth />
+            </div>
+         
+        )
+      }
     <div className='main-upper'>
      <p className='main-upper-txt'>This page display infromation about products you can view, edit and delete them</p> 
      <button className='new-product' onClick={handleAddProduct}>Add New Product</button>
@@ -86,6 +109,7 @@ function Home() {
                 />
             })
         }
+    </div>
     </div>
     </>
   

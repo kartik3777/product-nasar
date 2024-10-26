@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./navbar.css";
 import { Outlet, useNavigate } from "react-router-dom";
+import Auth from "./Login";
+import { useScrollTrigger } from "@mui/material";
 
-function NavBar() {
+function NavBar(props) {
   const navigate = useNavigate();
+  const [islogin, setislogin] = useState(false);
+
+  const handlelogin = async() => {
+      setislogin(true);
+     props.onlogin(true);
+  }
+
   return (
     <>
+   
       <div className="nav-out">
         <div className="nav-left">
           <h1 onClick={() => navigate("/")} className="website-name">MyWebsite</h1>
         </div>
         <div className="nav-right">
-          <a href="/login" className="login-link">
+          <div onClick={handlelogin} className="login-link">
             Login
-          </a>
+          </div>
         </div>
       </div>
 
